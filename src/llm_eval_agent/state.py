@@ -25,6 +25,8 @@ class InputState:
     info: Optional[dict[str, Any]] = field(default=None)
     "The info state tracks the current extracted data for the given topic, conforming to the provided schema. This is primarily populated by the agent."
 
+    example_data_csv_path: Optional[str] = field(default=None)
+    "Example dataset for LLM evaluation or sythetic data generation"
 
 @dataclass(kw_only=True)
 class State(InputState):
