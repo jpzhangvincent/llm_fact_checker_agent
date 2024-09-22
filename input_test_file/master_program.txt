@@ -1,0 +1,43 @@
+topic:"top 20 data science master program in US"
+
+extraction_schema:
+{
+    "type": "object",
+    "properties": {
+        "universities": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "University name"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State where the university is located"
+                    },
+                    "founded": {
+                        "type": "string",
+                        "description": "How many years the university is founded"
+                    },
+                    "QS ranking": {
+                        "type": "string",
+                        "description": "QS ranking of the university"
+                    },
+                    "Program QS ranking": {
+                        "type": "string",
+                        "description": "QS ranking of the program"
+                    },
+                    "Unique feature": {
+                        "type": "string",
+                        "description": "Unique feature of the program"
+                    }
+                },
+                "required": ["name","state","QS ranking","Unique feature"]
+            },
+            "description": "List of companies"
+        }
+    },
+    "required": ["universities"]
+}

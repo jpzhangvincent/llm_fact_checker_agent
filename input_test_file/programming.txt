@@ -1,0 +1,32 @@
+topic:"popular programming language for data science"
+
+extraction_schema:
+{
+    "type": "object",
+    "properties": {
+        "programming_languages": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "programming language name"
+                    },
+                    "why_popular": {
+                        "type": "string",
+                        "description": "reason why this programming language is popular"
+                    },
+                    "is_open_source": {
+                        "type": "string",
+                        "description": "is this programming language open source"
+                    },
+
+                },
+                "required": ["name","why_popular","is_open_source"]
+            },
+            "description": "List of programming languages"
+        }
+    },
+    "required": ["programming_languages"]
+}
