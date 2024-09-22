@@ -12,3 +12,11 @@ pip install -r src/requirements.txt
 
 cp .env.example .env #fill the credentials
 ```
+
+
+# Run & Test Langgraph locally
+
+```
+# make sure docker is running locally and dependencies installed
+langgraph up
+```
