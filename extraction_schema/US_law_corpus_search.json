@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "properties": {
+    "case_information": {
+      "type": "object",
+      "properties": {
+        "case_name": {
+          "type": "string",
+          "description": "The official name of the case (e.g., 'Brown v. Board of Education')"
+        },
+        "citation": {
+          "type": "string",
+          "description": "The legal citation for the case (e.g., '347 U.S. 483 (1954)')"
+        },
+        "court": {
+          "type": "string",
+          "description": "The court that decided the case (e.g., 'Supreme Court of the United States')"
+        },
+        "date_decided": {
+          "type": "string",
+          "format": "date",
+          "description": "The date the case was decided"
+        }
+      },
+      "required": ["case_name", "citation", "court", "date_decided"]
+    },
+    "legal_topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "A list of legal topics or areas of law relevant to the case"
+    },
+    "summary": {
+      "type": "string",
+      "description": "A brief summary of the case and its key points"
+    },
+    "holdings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "The main legal conclusions or rules established by the case"
+    },
+    "statutes_referenced": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name or title of the statute"
+          },
+          "code": {
+            "type": "string",
+            "description": "The specific code section (e.g., '42 U.S.C. § 1983')"
+          }
+        },
+        "required": ["name", "code"]
+      },
+      "description": "Statutes referenced or interpreted in the case"
+    },
+    "precedents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "case_name": {
+            "type": "string",
+            "description": "The name of the precedent case"
+          },
+          "citation": {
+            "type": "string",
+            "description": "The citation for the precedent case"
+          },
+          "relevance": {
+            "type": "string",
+            "description": "Brief explanation of how this precedent relates to the current case"
+          }
+        },
+        "required": ["case_name", "citation", "relevance"]
+      },
+      "description": "Previous cases cited as precedents in this case"
+    },
+    "full_text_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to the full text of the legal document"
+    }
+  },
+  "required": ["case_information", "legal_topics", "summary", "holdings"]
+}

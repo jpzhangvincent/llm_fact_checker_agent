@@ -1,0 +1,135 @@
+{
+  "type": "object",
+  "properties": {
+    "patient_information": {
+      "type": "object",
+      "properties": {
+        "patient_id": {
+          "type": "string",
+          "description": "Unique identifier for the patient"
+        },
+        "date_of_service": {
+          "type": "string",
+          "format": "date",
+          "description": "Date when the medical service was provided"
+        },
+        "provider_id": {
+          "type": "string",
+          "description": "Identifier for the healthcare provider"
+        }
+      },
+      "required": ["patient_id", "date_of_service", "provider_id"]
+    },
+    "diagnoses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "icd_10_cm_code": {
+            "type": "string",
+            "description": "ICD-10-CM code for the diagnosis"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the diagnosis"
+          },
+          "primary": {
+            "type": "boolean",
+            "description": "Indicates if this is the primary diagnosis"
+          }
+        },
+        "required": ["icd_10_cm_code", "description"]
+      },
+      "description": "List of diagnoses for the patient encounter"
+    },
+    "procedures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cpt_code": {
+            "type": "string",
+            "description": "CPT code for the procedure"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the procedure"
+          },
+          "modifier": {
+            "type": "string",
+            "description": "Any modifier applied to the CPT code"
+          }
+        },
+        "required": ["cpt_code", "description"]
+      },
+      "description": "List of procedures performed during the patient encounter"
+    },
+    "medications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ndc_code": {
+            "type": "string",
+            "description": "National Drug Code (NDC) for the medication"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the medication"
+          },
+          "dosage": {
+            "type": "string",
+            "description": "Dosage of the medication"
+          },
+          "route": {
+            "type": "string",
+            "description": "Route of administration"
+          }
+        },
+        "required": ["ndc_code", "name", "dosage", "route"]
+      },
+      "description": "List of medications prescribed or administered"
+    },
+    "medical_equipment": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "hcpcs_code": {
+            "type": "string",
+            "description": "HCPCS code for the medical equipment"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the medical equipment"
+          }
+        },
+        "required": ["hcpcs_code", "description"]
+      },
+      "description": "List of medical equipment used or prescribed"
+    },
+    "place_of_service": {
+      "type": "string",
+      "description": "Two-digit code indicating where the service was provided (e.g., '11' for office, '21' for inpatient hospital)"
+    },
+    "billing_codes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Billing code (e.g., DRG for inpatient stays)"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of billing code (e.g., 'DRG', 'APC')"
+          }
+        },
+        "required": ["code", "type"]
+      },
+      "description": "Billing codes applicable to the encounter"
+    }
+  },
+  "required": ["patient_information", "diagnoses", "procedures", "place_of_service"]
+}
