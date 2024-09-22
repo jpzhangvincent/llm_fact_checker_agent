@@ -10,6 +10,7 @@ You have access to the following tools:
 
 - `Search`: call a search tool and get back some results
 - `ScrapeWebsite`: scrape a website and get relevant notes about the given request. This will update the notes above.
+- `SyntheticDataGenerator`: call this when it requires to generate fact-based sythetic data after gathering the relevant info
 - `Info`: call this when you are done and have gathered all the relevant info
 
 Here is the information you have about the topic you are researching:

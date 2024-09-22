@@ -15,7 +15,7 @@ from pydantic import BaseModel, Field
 from llm_eval_agent import prompts
 from llm_eval_agent.configuration import Configuration
 from llm_eval_agent.state import InputState, OutputState, State
-from llm_eval_agent.tools import scrape_website, search
+from llm_eval_agent.tools import scrape_website, search, synthetic_data_generator
 from llm_eval_agent.utils import init_model
 
 
@@ -51,7 +51,7 @@ async def call_agent_model(
 
     # Initialize the raw model with the provided configuration and bind the tools
     raw_model = init_model(config)
-    model = raw_model.bind_tools([scrape_website, search, info_tool], tool_choice="any")
+    model = raw_model.bind_tools([scrape_website, search, info_tool, synthetic_data_generator], tool_choice="any")
     response = cast(AIMessage, await model.ainvoke(messages))
 
     # Initialize info to None
@@ -125,6 +125,7 @@ async def reflect(
     checker_prompt = """I am thinking of calling the info tool with the info below. \
 Is this good? Give your reasoning as well. \
 You can encourage the Assistant to look at specific URLs if that seems relevant, or do more searches.
+If the user asks for the fact-based sythetic data generation, call the `synthetic_data_generator` tool specifically.
 If you don't think it is good, you should be very specific about what could be improved.
 
 {presumed_info}"""
@@ -219,7 +220,7 @@ workflow = StateGraph(
 )
 workflow.add_node(call_agent_model)
 workflow.add_node(reflect)
-workflow.add_node("tools", ToolNode([search, scrape_website]))
+workflow.add_node("tools", ToolNode([search, scrape_website, synthetic_data_generator]))
 workflow.add_edge("__start__", "call_agent_model")
 workflow.add_conditional_edges("call_agent_model", route_after_agent)
 workflow.add_edge("tools", "call_agent_model")

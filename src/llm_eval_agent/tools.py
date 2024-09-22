@@ -15,6 +15,10 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.runnables import RunnableConfig
 from langchain_core.tools import InjectedToolArg
 from langgraph.prebuilt import InjectedState
+from langchain_experimental.synthetic_data import (
+    DatasetGenerator,
+    create_data_generation_chain,
+)
 from typing_extensions import Annotated
 
 from llm_eval_agent.configuration import Configuration
@@ -74,3 +78,40 @@ async def scrape_website(
     raw_model = init_model(config)
     result = await raw_model.ainvoke(p)
     return str(result.content)
+
+
+_DATA_GENERATION_PROMPT = """You are good at generating fact-based sythethic data. You are trying to generate the data with the following desired format:
+
+<data_format>
+{info}
+</data_format>
+
+Based on the research content and topic below, generate the fact-based sythethic data.
+
+<Website content>
+{content}
+</Website content>
+<topic>
+{topic}
+</topic>
+
+Generate fact-based sythethic data paraphased in a subject's personal tone if mentioned:"""
+
+
+async def synthetic_data_generator(
+    content: str = "", *, 
+    state: Annotated[State, InjectedState],
+    config: Annotated[RunnableConfig, InjectedToolArg]
+) -> Optional[list[dict[str, Any]]]:
+    """Generate the synthetic data based on the data schema and research content provided
+    
+    """
+    raw_model = init_model(config)
+    data_gen_chain = create_data_generation_chain(raw_model)
+    p = _INFO_PROMPT.format(
+        info=json.dumps(state.extraction_schema, indent=2),
+        topic=state.topic,
+        content=content,
+    )
+    result = await data_gen_chain.ainvoke(p)
+    return cast(list[dict[str, Any]], result)
