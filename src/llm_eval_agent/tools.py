@@ -100,12 +100,19 @@ Here are some example data points to guide your generation:
 {example_data}
 </example_data>
 
+Please consider the following preferences when generating the data:
+
+<preferences>
+{preferences}
+</preferences>
+
 Generate the dataset now, ensuring it follows the schema and is inspired by but not identical to the example data:"""
 
 @weave.op()
 async def synthetic_data_generator(
     content: str = "",
     fields: List[str] = [],
+    preferences: dict = {},  # Add this line
     *,
     state: Annotated[State, InjectedState],
     config: Annotated[RunnableConfig, InjectedToolArg]
@@ -155,11 +162,12 @@ async def synthetic_data_generator(
                 "required": ["data_points"]
             }
 
-    # Prepare the prompt with example data
+    # Prepare the prompt with example data and preferences
     p = _DATA_GENERATION_PROMPT.format(
         topic=state.topic,
         schema=json.dumps(state.extraction_schema, indent=2),
-        example_data=json.dumps(example_data[:5]) if example_data else "No example data provided"
+        example_data=json.dumps(example_data[:5]) if example_data else "No example data provided",
+        preferences=json.dumps(preferences, indent=2)  if preferences else "No preferences provided"
     )
     result = await data_gen_chain.ainvoke(p)
 
