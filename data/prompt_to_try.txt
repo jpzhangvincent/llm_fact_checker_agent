@@ -1,4 +1,5 @@
 
+## Fact Checking
 News Fact Check:
 Trump's claim: people are eating the dogs and cats in Springfield
 
@@ -11,3 +12,11 @@ Brown v. Board of Education: landmark case on racial segregation in public schoo
 
 Medical Coding:
 Patient admitted with severe chest pain, diagnosed with acute myocardial infarction, underwent coronary angioplasty
+
+
+##Dataset Generation
+News Dataset:
+Generate a dataset of 30 news articles, each with a title, a summary, and a fact-check score (0-100)
+
+Medical Coding Dataset:
+Generate a synthetic dataset of 30 medical records with the following fields: patient_name, age, gender, medical_codes, and description.

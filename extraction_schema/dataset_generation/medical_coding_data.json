@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "medical_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "patient_name": {
+            "type": "string",
+            "description": "Full name of the patient"
+          },
+          "age": {
+            "type": "integer",
+            "description": "Age of the patient in years"
+          },
+          "gender": {
+            "type": "string",
+            "description": "Gender of the patient"
+          },
+          "medical_codes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "description": "Medical code"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Description of the medical code"
+                }
+              },
+              "required": ["code", "description"]
+            }
+          }
+        },
+        "required": ["patient_name", "age", "gender", "medical_codes"]
+      },
+      "minItems": 30,
+      "maxItems": 30
+    }
+  },
+  "required": ["medical_records"]
+}
