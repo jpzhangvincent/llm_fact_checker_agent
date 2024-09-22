@@ -1,0 +1,31 @@
+patient_name,age,gender,medical_codes,description
+John Doe,25,Female,"Q17, R18",Routine check-up
+Jane Smith,61,Female,C03,Cancer screening
+Mary Johnson,28,Female,"S19, T20",Nutritional counseling
+James Williams,23,Male,"H08, I09, J10",Mental health counseling
+Patricia Brown,86,Male,"S19, T20",Allergy symptoms
+Robert Jones,26,Male,"N14, O15, P16",Hearing loss treatment
+Linda Garcia,39,Female,"S19, T20",Cancer screening
+Michael Miller,20,Female,C03,Vaccination
+Elizabeth Martinez,77,Male,"S19, T20",Chronic pain management
+William Davis,31,Male,K11,Blood test results
+Barbara Rodriguez,90,Male,"L12, M13",COVID-19 symptoms
+David Martinez,58,Female,G07,Physical therapy
+Susan Hernandez,72,Female,"A01, B02",Blood test results
+Joseph Wilson,85,Female,K11,Allergy symptoms
+Jessica Lopez,53,Female,"Q17, R18",Hearing loss treatment
+Thomas Taylor,33,Female,"A01, B02",Blood test results
+Sarah Anderson,73,Female,"L12, M13",Hearing loss treatment
+Charles Thomas,32,Male,"A01, B02",Physical therapy
+Nancy Jackson,80,Female,"S19, T20",Cardiovascular evaluation
+Christopher White,48,Female,C03,Vision exam
+Karen Harris,78,Male,"Q17, R18",Rehabilitation check
+Matthew Clark,78,Male,"D04, E05, F06",Routine check-up
+Betty Lewis,76,Female,"S19, T20",Hypertension follow-up
+Mark Lee,81,Male,C03,Post-surgery consultation
+Sandra Walker,62,Female,"L12, M13",Mental health counseling
+Andrew Hall,22,Female,"H08, I09, J10",Postpartum follow-up
+Donald Allen,81,Female,"H08, I09, J10",Occupational health screening
+Steven Young,82,Female,"D04, E05, F06",Prenatal care
+Dorothy King,23,Male,"Q17, R18",Weight loss consultation
+Brian Wright,66,Male,K11,Weight loss consultation
