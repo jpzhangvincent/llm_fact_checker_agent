@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+      "references": {
+          "type": "array",
+          "items": {
+              "type": "object",
+              "properties": {
+                  "title": {
+                      "type": "string",
+                      "description": "title name of the scientific paper"
+                  },
+                  "url": {
+                      "type": "string",
+                      "description": "url link to the scientific paper",
+                  },
+                  "source_trustworthy_score": {
+                      "type": "number",
+                      "description": "0 to 1 score in terms of whether the source is trustworthy in general",
+                  },
+                  "support_claim": {
+                      "type": "boolean",
+                      "description": "boolean value to indicate whether the scientific paper support the claim",
+                  },
+              },
+              "required": ["title", "url", "source_trustworthy_score", "support_claim"],
+          },
+          "description": "Scientific Research Fact Check",
+      },
+      "factualness_score": {
+          "type": "number",
+          "description": "0 to 1 score in terms of factualness based on the references from research above"
+      }
+  },
+  "required": ["references"],
+}

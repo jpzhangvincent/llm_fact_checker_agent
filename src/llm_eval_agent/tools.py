@@ -5,6 +5,8 @@ These tools can be used for tasks such as web searching and scraping.
 Users can edit and extend these tools as needed.
 """
 
+import weave
+
 import json
 from typing import Any, Optional, cast
 
@@ -19,7 +21,7 @@ from llm_eval_agent.configuration import Configuration
 from llm_eval_agent.state import State
 from llm_eval_agent.utils import init_model
 
-
+@weave.op()
 async def search(
     query: str, *, config: Annotated[RunnableConfig, InjectedToolArg]
 ) -> Optional[list[dict[str, Any]]]:
@@ -48,7 +50,7 @@ Based on the website content below, jot down some notes about the website.
 {content}
 </Website content>"""
 
-
+@weave.op()
 async def scrape_website(
     url: str,
     *,
